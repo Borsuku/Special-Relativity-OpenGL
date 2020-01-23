@@ -10,6 +10,8 @@ finite speed of propagation of light are taken into account. The physical theory
 the code uses the same notation. To change the the scenario visible on the scene, modify "setUpScene" function in
 "scene.h".
 
+Example models and textures included. Libraries not included.
+
 The code was written with the help of the following tutorials and websites:
 https://learnopengl.com
 The source code for "mesh.h", "model.h" was taken directly from the https://learnopengl.com tutorial. The code
@@ -30,4 +32,5 @@ ENTER         to take a screenshot - the result: "screenshot.tga" will appear in
 3             to set the speed of propagation of light to infinity/back to normal - to show where the objects
 actually are at a given time
 4             to turn off/on doppler effect
+
 THIS PROGRAM HAS ONLY BEEN TESTED ON MAC OS 10.15.2
