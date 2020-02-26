@@ -34,7 +34,7 @@ public:
     }, indices {  // note that we start from 0!
         0, 1, 3,  // first Triangle
         1, 2, 3   // second Triangle
-    }, plane_shader("assets/shaders/plane/plane.vs", "assets/shaders/plane/plane.fs") {
+    }, plane_shader("src/shaders/plane/plane.vs", "src/shaders/plane/plane.fs") {
         unsigned int VBO, EBO;
         glGenVertexArrays(1, &VAO);
         glGenBuffers(1, &VBO);

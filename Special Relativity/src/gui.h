@@ -67,13 +67,13 @@ private:
     void setText() {
         info[FPS] = DisplayedInfo("FPS", glm::vec2(20, 20), glm::vec3(0, 1, 0), LEFT_ALIGNMENT);
         //findTextWidth(info[FPS]);
-        info[CAMERA_POSITION] = DisplayedInfo("Position", glm::vec2(20, 50), glm::vec3(0, 1, 0), LEFT_ALIGNMENT);
+        info[CAMERA_POSITION] = DisplayedInfo("Position", glm::vec2(20, 75), glm::vec3(0, 1, 0), LEFT_ALIGNMENT);
         //findTextWidth(info[CAMERA_POSITION]);
-        info[CAMERA_ORIENTATION] = DisplayedInfo("Orientation", glm::vec2(20, 80), glm::vec3(0, 1, 0), LEFT_ALIGNMENT);
+        info[CAMERA_ORIENTATION] = DisplayedInfo("Orientation", glm::vec2(20, 130), glm::vec3(0, 1, 0), LEFT_ALIGNMENT);
         //findTextWidth(info[CAMERA_ORIENTATION]);
-        info[CAMERA_TIME] = DisplayedInfo("Time", glm::vec2(20, 110), glm::vec3(0, 1, 0), LEFT_ALIGNMENT);
+        info[CAMERA_TIME] = DisplayedInfo("Time", glm::vec2(20, 185), glm::vec3(0, 1, 0), LEFT_ALIGNMENT);
         //findTextWidth(info[CAMERA_TIME]);
-        info[CAMERA_ANGLE] = DisplayedInfo("Angle", glm::vec2(20, 140), glm::vec3(0, 1, 0), LEFT_ALIGNMENT);
+        info[CAMERA_ANGLE] = DisplayedInfo("Angle", glm::vec2(20, 240), glm::vec3(0, 1, 0), LEFT_ALIGNMENT);
         //findTextWidth(info[CAMERA_ANGLE]);
     }
     
@@ -168,7 +168,7 @@ public:
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
         
-        font_shader = Shader("assets/shaders/font/font.vs", "assets/shaders/font/font.fs");
+        font_shader = Shader("src/shaders/font/font.vs", "src/shaders/font/font.fs");
         
         font_shader.use();
         font_shader.setMat4("projection", projection);

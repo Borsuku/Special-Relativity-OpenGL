@@ -72,28 +72,70 @@ private:
     float speed_of_light = 1.0f;
     
     void setUpScene() {
-        addRelativisticShader();
-        addModel("assets/objects/monkey_textured/monkey_textured.obj");
-        addObject(0.0f, 5.0f, -15.0f, -0.6, 0.5, 0.1, 0, 0, 0, 0);
-        addModel("assets/objects/destroyer/destroyer.obj");
-        addObject(0.0f, 0, -15.0f, 0.0f, 0.9f, 0.0f, 0, 0, 0.2, 0);
-        addObject(0.0f, 1.0f, -2.0f, 0.99f, 0.0f, 0.0f, 1, 1, 1, 0.3f);
-        addModel("assets/objects/sphere/sphere.obj");
-        for(int i = 0; i < 10; i++) {
-            addObject(0.0f, i*3-15.0f, -8, 0.111f*i, 0.0f, 0.0f);
+        glm::mat4 custom;
+        
+        
+        //SCENARIO 1 - Terell rotation, Lorentz contraction - BOX
+        addRelativisticShader("return aPos+custom[0].xyz;");
+        addModel("assets/objects/die/die.obj");
+        for(int i = -5; i <= 5; i++) {
+            custom = glm::mat4(glm::vec4(i*3.0f, 0, 0, 0), glm::vec4(0), glm::vec4(0), glm::vec4(0));
+            addObject(0, 0, 0, 0.99f, 0.0f, 0.0f, custom);
+            addObject(0, 3, 0, 0.0f, 0.0f, 0.0f, custom);
         }
-        addRelativisticShader("return aPos+custom[0].xyz*sin(t_local*custom[0].w)+custom[1].xyz;");
-        addModel("assets/objects/cube_textured_complex/cube.obj");
-        for(int i = -100; i < 100; i++) {
-            glm::mat4 custom(glm::vec4(0, 1.0f, 0, 0.5f), glm::vec4(i*3.0f, 0, 0, 0), glm::vec4(0), glm::vec4(0));
-            addObject(0.0f, 10, 0, 0.9f, 0.0f, 0.0f, custom);
+        
+        
+        //SCENARIO 2 - Time dilation - CLOCKS
+        /*addModel("assets/objects/clock/clock.obj");
+        addRelativisticShader("return rotate(custom[0].xyz, t_local*custom[0].w)*custom[1].x*aPos;");
+        custom = glm::mat4(glm::vec4(0), glm::vec4(0.575, 0, 0, 0), glm::vec4(0), glm::vec4(0));
+        for(int i = 0; i < 3; i++) {
+            addObject(0.0f, i*2.0f, -20, 0.33f*i, 0.0f, 0.0f, custom);
         }
-        addRelativisticShader("return rotate(custom[0].xyz, custom[0].w*t_local)*aPos+custom[1].xyz;");
+        addObject(0.0f, 6.0f, -20, 0.9, 0.0f, 0.0f, custom);
+        addModel("assets/objects/clock/clock_tick.obj");
+        custom = glm::mat4(glm::vec4(0, 0, 1.0f, 0.5257f), glm::vec4(0.575, 0, 0, 0), glm::vec4(0), glm::vec4(0));
+        for(int i = 0; i < 3; i++) {
+            addObject(0.0f, i*2.0f, -20, 0.33f*i, 0.0f, 0.0f, custom);
+        }
+        addObject(0.0f, 6.0f, -20, 0.9, 0.0f, 0.0f, custom);*/
+        
+        
+        //SCENARIO 3 - BOX SEQUENCE
+        /*addRelativisticShader("return aPos+custom[0].xyz*sin(t_local*custom[0].w)+custom[1].xyz;");
+        addModel("assets/objects/die/die.obj");
+        for(int i = -50; i < 50; i++) {
+            custom = glm::mat4(glm::vec4(0, 1.0f, 0, 0.5f), glm::vec4(i*3.0f, 0, 0, 0), glm::vec4(0), glm::vec4(0));
+            addObject(0.0f, 5, 0, 0.0f, 0.0f, 0.0f, custom);
+        }
+        for(int i = -50; i < 50; i++) {
+            custom = glm::mat4(glm::vec4(0, 1.0f, 0, 0.5f), glm::vec4(i*3.0f, 0, 0, 0), glm::vec4(0), glm::vec4(0));
+            addObject(0.0f, 0, 0, 0.9f, 0.0f, 0.0f, custom);
+        }*/
+        
+        
+        //SCENARIO 4 - Bike - WHEELS
+        /*addRelativisticShader("return rotate(custom[0].xyz, custom[0].w*t_local)*aPos+custom[1].xyz;");
         addModel("assets/objects/wheel/wheel.obj");
-        glm::mat4 custom(glm::vec4(0, 0, 1, 0.8f), glm::vec4(0), glm::vec4(0), glm::vec4(0));
-        addObject(0.0f, 0.01f, 2.0f, 0.7f, 0.0f, 0.0f, custom);
-        custom[1][0] = 3.0f;
-        addObject(0.0f, 0.01f, 2.0f, 0.7f, 0.0f, 0.0f, custom);
+        addObject(-3.0f, 1, -2.0f, 0.0f, 0.0f, 0.0f, custom);
+        custom = glm::mat4(glm::vec4(0, 0, 1, 0.9f), glm::vec4(0), glm::vec4(0), glm::vec4(0));
+        addObject(3.0f, 1, 0.0f, 0.9f, 0.0f, 0.0f, custom);
+        addObject(3.0f, 1, -2.0f, 0.0f, 0.0f, 0.0f, custom);*/
+        
+        
+        //SCENARIO 5 - SPHERES
+        /*addRelativisticShader();
+        addModel("assets/objects/sphere/sphere.obj");
+        addObject(0.0f, 1, 4, 0.999, 0.0f, 0.0f);
+        addObject(0.0f, 1, 0, 0.9, 0.0f, 0.0f);
+        addObject(0.0f, 1, -4, 0, 0.0f, 0.0f);*/
+        
+        
+        //SCENARIO 6 - RELATIVISTIC ABERRATION
+        /*addRelativisticShader("return aPos*100.0f;");
+        addModel("assets/objects/universe/universe.obj");
+        addObject(0.0f, 1, 0, 0, 0, 0.99f);*/
+        
     }
 public:
     
@@ -101,7 +143,7 @@ public:
     
     Scene() {
         //load coords shader first
-        addShader("assets/shaders/default/default.vs", "assets/shaders/default/default.fs");
+        addShader("src/shaders/default/default.vs", "src/shaders/default/default.fs");
         addModel("assets/objects/coords/coords2.obj");
         addModel("assets/objects/coords/arrow.obj");
         
@@ -219,7 +261,7 @@ private:
     }
     
     void addRelativisticShader(const char* custom_vertex_fragment = nullptr) {
-        Shader shader = Shader("assets/shaders/ray/sr_ray.vs", "assets/shaders/ray/sr_ray.fs", custom_vertex_fragment);
+        Shader shader = Shader("src/shaders/ray/sr_ray.vs", "src/shaders/ray/sr_ray.fs", custom_vertex_fragment);
         shaders.push_back(shader);
     }
 };
