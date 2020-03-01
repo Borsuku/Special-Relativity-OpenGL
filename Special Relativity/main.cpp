@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  GPURaymarching
+//  Visual effects of special relativity
 //
 //  Created by Antoni Wójcik on 26/03/2019.
 //
